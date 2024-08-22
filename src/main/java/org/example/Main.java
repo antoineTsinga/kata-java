@@ -13,11 +13,11 @@ public class Main {
         if (args.length < 1) {
             System.err.println("Erreur : Veuillez spécifier le chemin du fichier d'entrée en argument.");
             System.err.println("Usage : java -jar kata-test.jar chemin/vers/fichier_entree.txt");
-            System.exit(1);
+            return;
         }
         String filePath = args[0];
 
-        // Initiate strategies
+        // Initialisation des strategies
         Map<Character, MovementStrategy> strategies = new HashMap<>();
         strategies.put('G', Position::rotateLeft);
         strategies.put('D', Position::rotateRight);
@@ -60,6 +60,7 @@ public class Main {
                     // Afficher la position finale
                     Position finalPosition = tondeuse.getPosition();
                     System.out.println(finalPosition.getX() + " " + finalPosition.getY() + " " + finalPosition.getOrientation());
+
                 } catch (InputMismatchException e) {
                     System.err.println("Erreur de format dans le fichier d'entrée. Passage à la ligne suivante.");
                     scanner.nextLine(); // Passer à la ligne suivante
